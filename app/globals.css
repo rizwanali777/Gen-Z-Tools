@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 246 24% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 246 24% 8%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 246 24% 8%;
+  --primary: 263 83% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 90% 94%;
+  --secondary-foreground: 246 30% 12%;
+  --muted: 250 40% 96%;
+  --muted-foreground: 246 10% 32%;
+  --accent: 199 92% 92%;
+  --accent-foreground: 246 40% 18%;
+  --destructive: 0 72% 46%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 250 40% 86%;
+  --input: 250 30% 82%;
+  --ring: 263 83% 52%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 246 28% 4%;
+  --foreground: 0 0% 100%;
+  --card: 246 22% 8%;
+  --card-foreground: 0 0% 100%;
+  --popover: 246 24% 7%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 263 90% 74%;
+  --primary-foreground: 246 30% 8%;
+  --secondary: 199 70% 18%;
+  --secondary-foreground: 199 100% 92%;
+  --muted: 246 16% 14%;
+  --muted-foreground: 230 20% 78%;
+  --accent: 199 60% 18%;
+  --accent-foreground: 199 100% 92%;
+  --destructive: 0 80% 64%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 250 20% 24%;
+  --input: 250 16% 28%;
+  --ring: 199 95% 70%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  background-color: #f7f8ff;
+  background-image:
+    radial-gradient(42rem 24rem at -8% -10%, rgba(124, 58, 237, 0.34), transparent 62%),
+    radial-gradient(36rem 22rem at 110% 0%, rgba(56, 189, 248, 0.38), transparent 58%),
+    radial-gradient(28rem 18rem at 80% 110%, rgba(167, 139, 250, 0.28), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #eef3ff 100%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-color: #05040a;
+  background-image:
+    radial-gradient(40rem 24rem at -10% -8%, rgba(124, 58, 237, 0.48), transparent 60%),
+    radial-gradient(34rem 22rem at 108% 0%, rgba(56, 189, 248, 0.32), transparent 58%),
+    radial-gradient(26rem 18rem at 70% 110%, rgba(88, 28, 135, 0.45), transparent 62%),
+    linear-gradient(180deg, #05040a 0%, #070b16 100%);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.58);
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 10px 40px rgba(76, 29, 149, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+}
+
+.dark .glass {
+  background: rgba(8, 8, 16, 0.52);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.glass .rounded-lg.bg-background,
+.glass .rounded-xl.bg-background,
+.glass pre {
+  background-color: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px);
+}
+
+.dark .glass .rounded-lg.bg-background,
+.dark .glass .rounded-xl.bg-background,
+.dark .glass pre {
+  background-color: rgba(0, 0, 0, 0.32);
+}
+
+.glass-inset {
+  background: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.dark .glass-inset {
+  background: rgba(0, 0, 0, 0.32);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.28);
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+[cmdk-group-heading] {
+  padding: 0.45rem 0.5rem 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+.checkerboard {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(45deg, #ddd6fe 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd6fe 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd6fe 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd6fe 75%);
+  background-size: 18px 18px;
+  background-position:
+    0 0,
+    0 9px,
+    9px -9px,
+    -9px 0;
+}
+
+.dark .checkerboard {
+  background-color: #05040a;
+  background-image:
+    linear-gradient(45deg, #1e1b4b 25%, transparent 25%),
+    linear-gradient(-45deg, #1e1b4b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1e1b4b 75%),
+    linear-gradient(-45deg, transparent 75%, #1e1b4b 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

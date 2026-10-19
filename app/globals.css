@@ -23,6 +23,8 @@
   --input: 250 30% 82%;
   --ring: 263 83% 52%;
   --radius: 1rem;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .dark {

@@ -1,14 +1,12 @@
 "use client";
 
-import { Caveat, Great_Vibes } from "next/font/google";
+import "@fontsource/caveat/500.css";
+import "@fontsource/great-vibes/400.css";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { downloadBlob } from "@/lib/files";
 import { cn } from "@/lib/utils";
-
-const caveat = Caveat({ subsets: ["latin"], weight: "500" });
-const vibes = Great_Vibes({ subsets: ["latin"], weight: "400" });
 
 type Point = { x: number; y: number };
 type Stroke = { color: string; size: number; points: Point[] };
@@ -33,8 +31,8 @@ export function SignatureTool() {
   }, [mode]);
 
   const families = {
-    caveat: caveat.style.fontFamily,
-    vibes: vibes.style.fontFamily,
+    caveat: "Caveat",
+    vibes: "Great Vibes",
     cursive: "Segoe Script, Brush Script MT, cursive",
   };
 
@@ -58,7 +56,8 @@ export function SignatureTool() {
     const trimmed = name.trim();
     if (!trimmed) return;
     const family = families[font];
-    await document.fonts.load(`160px ${family}`);
+    const canvasFamily = family.includes(",") ? family : `"${family}"`;
+    await document.fonts.load(`160px ${canvasFamily}`);
     const canvas = document.createElement("canvas");
     canvas.width = 2400;
     canvas.height = 700;
@@ -68,7 +67,7 @@ export function SignatureTool() {
     ctx.fillStyle = color;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.font = `160px ${family}`;
+    ctx.font = `160px ${canvasFamily}`;
     ctx.fillText(trimmed, canvas.width / 2, canvas.height / 2);
     canvas.toBlob((blob) => {
       if (blob) downloadBlob(blob, "signature.png");
@@ -77,7 +76,7 @@ export function SignatureTool() {
 
   return (
     <div className="space-y-3">
-      <p className={`${caveat.className} ${vibes.className} sr-only`} aria-hidden>
+      <p className="sr-only" style={{ fontFamily: "Caveat, 'Great Vibes', cursive" }} aria-hidden>
         Signature fonts
       </p>
       <div className="flex flex-wrap gap-2">
@@ -116,8 +115,8 @@ export function SignatureTool() {
       ) : (
         <div className="flex h-44 items-center justify-center rounded-xl border bg-white/40 px-4 dark:bg-black/30">
           <p
-            className={cn("text-center text-5xl text-black sm:text-6xl", font === "vibes" ? vibes.className : font === "caveat" ? caveat.className : "")}
-            style={{ color, fontFamily: font === "cursive" ? families.cursive : undefined }}
+            className="text-center text-5xl text-black sm:text-6xl"
+            style={{ color, fontFamily: families[font] }}
           >
             {name.trim() || "Your name"}
           </p>

@@ -32,10 +32,29 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
-  serverExternalPackages: ["pdfjs-dist", "docx", "@ffmpeg/ffmpeg", "@ffmpeg/util"],
-  webpack: (config) => {
-    config.resolve.alias.canvas = false;
-    config.resolve.alias.encoding = false;
+  serverExternalPackages: [
+    "pdfjs-dist",
+    "docx",
+    "@ffmpeg/ffmpeg",
+    "@ffmpeg/util",
+    "@imgly/background-removal",
+    "onnxruntime-web",
+  ],
+  webpack: (config, { isServer }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      canvas: false,
+      encoding: false,
+    };
+    if (!isServer) {
+      const ortDist = path.join(root, "node_modules/onnxruntime-web/dist");
+      config.resolve.alias["onnxruntime-web/webgpu"] = path.join(ortDist, "ort.webgpu.bundle.min.mjs");
+      config.resolve.alias["onnxruntime-web"] = path.join(ortDist, "ort.bundle.min.mjs");
+    }
+    config.module.rules.push({
+      test: /[\\/]node_modules[\\/]onnxruntime-web[\\/]dist[\\/].*\.m?js$/,
+      parser: { javascript: { importMeta: false } },
+    });
     return config;
   },
   async headers() {
@@ -50,6 +69,8 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
         ],
       },
     ];

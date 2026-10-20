@@ -17,10 +17,15 @@ export default function PrivacyPage() {
           account or drop analytics cookies.
         </p>
         <p>
-          AI tools are different. Remove Background, AI Grammar Fixer, AI Email Generator, and AI Prompt Enhancer send
-          the current image or text to a Next.js route only after you press the button. That route forwards the payload
-          to the Hugging Face Inference API with a server-side token and returns the result. The token is never shipped
-          to the browser. Request bodies are not written to a database by this application.
+          Remove Background also stays on your device. The first time you run it, the page downloads an open model and a
+          WebAssembly runtime from IMG.LY&apos;s asset host. The browser caches those files. The photo itself is not
+          uploaded.
+        </p>
+        <p>
+          Writing tools that use AI are different. AI Grammar Fixer, AI Email Generator, and AI Prompt Enhancer send
+          the current text to a Next.js route only after you press the button. That route forwards the payload to the
+          Hugging Face Inference API with a server-side token and returns the result. The token is never shipped to
+          the browser. Request bodies are not written to a database by this application.
         </p>
         <p>
           Currency conversion asks a public rate feed for exchange rates. The amount you type stays in the page.

@@ -19,8 +19,16 @@ export default function TermsPage() {
           scans. Image, audio, and data tools depend on the browser you use. Check the output before you rely on it.
         </p>
         <p>
-          AI features depend on a third-party model and on the token configured for this deployment. They can be
+          AI writing features depend on a third-party model and on the token configured for this deployment. They can be
           unavailable, slow, or wrong. Do not send secrets, credentials, or data you are not allowed to transmit.
+        </p>
+        <p>
+          Background removal runs in the browser with @imgly/background-removal, which is licensed under the GNU
+          AGPL-3.0. The model weights are MIT. Source and the remaining license duties are listed on the{" "}
+          <a className="underline decoration-border underline-offset-2 hover:text-foreground" href="/licenses">
+            licenses page
+          </a>
+          .
         </p>
         <p>
           The software is provided without a warranty of fitness for a particular purpose. To the extent the law

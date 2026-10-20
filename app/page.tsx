@@ -22,9 +22,9 @@ export default function HomePage() {
             <h2 className="text-lg font-semibold">Built for the tab you already have open</h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
               PDF and Word conversion, image export, JSON formatting, unit math, and QR codes run with JavaScript and the canvas.
-              Heavy pieces such as the PDF reader and the MP3 encoder load only after you use them. Background removal
-              and grammar correction are the exceptions: they call a server proxy when you press the button, and that
-              proxy is the only place the Hugging Face token lives.
+              Heavy pieces such as the PDF reader, the MP3 encoder, and background removal load only after you use them.
+              Background removal stays on this device. Grammar correction, email drafts, and prompt expansion call a server
+              proxy when you press the button, and that proxy is the only place the Hugging Face token lives.
             </p>
           </div>
           <ul className="grid gap-2 text-sm">

@@ -10,7 +10,7 @@ export function Footer() {
         <div className="lg:col-span-1">
           <BrandMark />
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            Utilities that run in the browser. AI tools send text or a file only after you press the button.
+            Utilities that run in the browser. Writing tools that use AI send text only after you press the button.
           </p>
         </div>
         {categories.map((category) => (
@@ -39,6 +39,9 @@ export function Footer() {
             </Link>
             <Link href="/terms" className="hover:text-foreground">
               Terms
+            </Link>
+            <Link href="/licenses" className="hover:text-foreground">
+              Licenses
             </Link>
           </div>
         </div>

@@ -87,7 +87,7 @@ export const categories: CategoryDefinition[] = [
     name: "Image & Media",
     summary: "Resize images, sign, cut audio, and remove backgrounds.",
     description:
-      "Media utilities for cropping and exporting images, drawing a transparent signature, trimming audio, and removing a background when you explicitly run the AI model.",
+      "Media utilities for cropping and exporting images, drawing a transparent signature, trimming audio, and removing a background in the browser.",
     icon: "Image",
     href: "/image-media",
     tone: "bg-white/70 text-violet-900 dark:bg-white/10 dark:text-white",
@@ -318,30 +318,30 @@ export const tools: ToolDefinition[] = [
   {
     slug: "remove-background",
     name: "Remove Background",
-    summary: "Cut out a subject and download a transparent PNG.",
+    summary: "Cut out a subject in the browser and download a transparent PNG.",
     description:
-      "Remove an image background by sending it to an AI model when you press Remove. Preview the cutout on a checkerboard and download a PNG.",
+      "Remove an image background on your device with the ISNet model. The first run downloads the model into the browser cache. Preview the cutout on a checkerboard and download a PNG.",
     category: "image-media",
     icon: "Eraser",
-    processing: "ai",
+    processing: "client",
     keywords: ["remove background", "background remover", "transparent png", "cutout"],
     steps: [
-      "Drop a PNG, JPEG, or WebP.",
-      "Press Remove background to run the model.",
-      "Download the transparent PNG.",
+      "Drop a JPG, PNG, or WebP up to 8 MB and 4,096 pixels on the long side.",
+      "Press Remove background. The first run downloads the model and shows progress.",
+      "Download the transparent PNG. The photo stays on this device.",
     ],
     faqs: [
       {
         q: "Is the image uploaded?",
-        a: "Yes, but only when you press Remove background. The app proxy forwards it to the configured Hugging Face model and returns the cutout.",
+        a: "No. The photo is decoded and processed in your browser. The page downloads the model and WebAssembly runtime, and the browser caches them for the next run.",
       },
       {
         q: "What file do I get back?",
         a: "A PNG with transparency, so you can place the subject on another background.",
       },
       {
-        q: "Why might it fail?",
-        a: "The deployment needs a Hugging Face token, and the model must be available. Large files over 8 MB are rejected first.",
+        q: "Which model runs, and under what license?",
+        a: "The tool uses @imgly/background-removal 1.7.0 with the ISNet FP16 model. The library is AGPL-3.0 and the model weights are MIT. Source links are on the tool and the licenses page.",
       },
     ],
     homeOrder: 3,

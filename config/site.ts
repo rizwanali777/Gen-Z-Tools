@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Gen Z Tools",
   tagline: "Sleek tools in your browser",
   description:
-    "Private browser tools for documents, images, text, data, and everyday calculations. Files stay on your device unless you explicitly run an AI action.",
+    "Private browser tools for documents, images, text, data, and everyday calculations. Files stay on your device unless you explicitly run a writing AI action.",
   url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "http://localhost:3000",
   locale: "en_US",
 };
